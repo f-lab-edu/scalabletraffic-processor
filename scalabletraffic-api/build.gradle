@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+bootJar.enabled = false // 애플리케이션에 필요한 모든 의존성을 포함 , Executable Archive
+jar.enabled = true // 애플리케이션 실행에 필요한 의존성을 제외한 모든 리소스파일과 빌드된 소스코드의 클래스 파일만 포함 , Plain Archive
+
+group = 'org.processor'
+version = 'unspecified'
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    implementation project(':scalabletraffic-common')
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
